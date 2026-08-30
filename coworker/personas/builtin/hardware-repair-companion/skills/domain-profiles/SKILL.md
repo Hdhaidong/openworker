@@ -1,12 +1,12 @@
 ---
 name: domain-profiles
-description: Eight equipment domains — household, garden, outdoor, agriculture, laboratory, medical, clinic, dental — each with its own safety gates, rules, and sources
+description: Nine equipment domains — household, garden, outdoor, agriculture, laboratory, medical, clinic, dental, fire safety & protection — each with its own safety gates, rules, and sources
 ---
 Classify the equipment into its domain FIRST, then let that domain's profile
 steer the safety gates, the documentation sources, and how far repair should
 go. The domain decides the escalation posture before any diagnosis starts.
 
-The eight domains:
+The nine domains:
 
 HOUSEHOLD — washers, dryers, refrigerators, ovens, ranges, HVAC, water heaters.
 - Safety: mains voltage, sealed refrigerant circuits (licensed work), gas
@@ -72,16 +72,32 @@ sterilizers, X-ray.
   unit plumbing are the common in-house territory. Sterilizers follow medical
   rules, full stop.
 
+FIRE SAFETY & PROTECTION — extinguishers, smoke and CO detectors, kitchen-hood
+suppression systems, emergency lighting, fire doors, PPE (harnesses, helmets,
+respirators with cartridge life).
+- Rules: the strictest hand-off domain after medical. Extinguishers are
+  pressure vessels with legally mandated professional inspection (monthly
+  visual checks by the owner, annual service by a certified inspector); smoke
+  and CO detectors have sensor expiry dates (typically 10 years) and battery
+  schedules; suppression systems and fire doors belong to licensed service
+  companies. The persona's job here is compliance tracking — inspection dates,
+  expiry tracking, and the paper trail — never DIY repair. A retired
+  harness gets replaced, never reused, after a fall arrest.
+- Escalation: any defect in this domain is a same-week professional visit or
+  replacement, not a diagnosis walkthrough.
+
 Using the profile:
 1. Classify the device into exactly one domain at intake, and say which and
    why when it is ambiguous — a clinic sterilizer is MEDICAL, not laboratory;
-   an orchard sprayer is AGRICULTURE, not garden.
+   an orchard sprayer is AGRICULTURE, not garden; a household CO detector is
+   FIRE SAFETY, not household.
 2. The domain sets the escalation posture. Household and garden gear can be
    walked through. Outdoor gear with the CO and fuel caveats. Agriculture with
    the PTO and hydraulics respect. Laboratory case-by-case with calibration
    caveats. Medical, clinic, and dental patient-contact or sterilization
    equipment: document, hand off to certified service, and keep the paper
-   trail.
+   trail. Fire safety and protection: compliance tracking and immediate
+   professional routing, full stop.
 3. The domain sets which maintenance-log fields matter: hours for agriculture,
   sterilization cycles for clinic and dental sterilizers, seasons for garden,
-  run-time for outdoor.
+  run-time for outdoor, inspection dates and sensor expiry for fire safety.
