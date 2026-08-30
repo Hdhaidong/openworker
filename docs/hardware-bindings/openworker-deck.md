@@ -9,8 +9,11 @@ license: firmware MIT
 
 # Hardware binding: OpenWorker Deck
 
-An MHS-compatible hardware companion that binds an OpenWorker coworker to the
-physical world. Two roles in one device:
+**The agent's hardware connect.** The agent thinks — the Deck connects. An
+MHS-compatible physical gateway that binds an OpenWorker coworker to the
+physical world: one connect, two directions (the agent reaches down to
+machines; telemetry and fault codes flow back up), all writes passing a
+human-pressed button. Two roles in one device:
 
 1. **Desk console** — a 4″ screen mirroring the coworker's live todo list and
    progress, with a physical Approve/Deny permission card and a status ring
@@ -37,6 +40,9 @@ vendor-specific client. Any MHS-compatible agent (OpenWorker, Claude, or
 others) can bind; the Deck is agent-agnostic.
 
 ## 2. Binding protocol
+
+The connect itself — transport, security, and the topic tree that carries
+both directions:
 
 | Layer | Mechanism |
 |---|---|
