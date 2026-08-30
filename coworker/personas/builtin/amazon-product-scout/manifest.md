@@ -11,7 +11,7 @@ recommended_models: [anthropic:claude-opus-4-8, openai:gpt-5.5]
 default_permission_mode: interactive
 description: A market-research and product-development analyst for Amazon sellers and brand teams. Researches a niche from publicly visible signals, mines competitor reviews into a product spec, and runs a standing watch on competitor ASINs with scheduled delta briefs. No API keys required — it works from the web. Created by Hdhaidong, a custom business-agent creator.
 author: Hdhaidong
-homepage: https://github.com/Hdhaidong
+homepage: https://github.com/Hdhaidong/amazon-product-scout
 recommends:
   - connector: browser
     reason: read best-seller lists, product pages, and reviews directly
