@@ -27,6 +27,8 @@ This document defines how an OpenWorker agent binds to and operates a Deck.
 Product specifications live in the upstream repository; this binding covers the
 integration surface only.
 
+![The agent's hardware connect — agent binds the gateway, the gateway reaches field devices](assets/agent-gateway-connect.svg)
+
 ## 1. Discovery and registration
 
 The Deck registers itself and each bridged device as an MHS-compatible node:
@@ -117,7 +119,46 @@ Four contactless modalities work on any machine with power: vibration
 and acoustic (MEMS mic). These feed anomaly detection and risk prediction on
 the local model — the agent reads the derived risk briefs, not raw streams.
 
-## 8. Status
+## 8. Product editions
+
+One binding, four form factors — an agent that binds one Deck can operate any
+edition; the topic tree and disciplines are identical:
+
+| Edition | Form factor | Where it lives |
+|---|---|---|
+| Desktop | 4″ console, Approve/Deny permission card, status ring | On the desk, next to the agent's host |
+| Industrial | 35 mm DIN-rail, RS-485/CAN terminal blocks, RJ45, LoRa antenna, passive heatsink, wide-temp | Inside the cabinet, on the rail |
+| Socket | Smart-plug with pass-through outlet, built-in current sensing | In the wall outlet — zero-wiring entry; the appliance plugs into it |
+| Pendant | Screenless guardian tag, GNSS + barometer + nano-SIM | On the person — tracks and check-ins flow up through any nearby Deck |
+
+## 9. Protocol support
+
+Every protocol maps onto the same standard MHS read/write interface — the agent
+never learns a vendor SDK:
+
+| Link | Reaches | Typical equipment |
+|---|---|---|
+| Modbus RTU (RS-485 multi-drop) | PLCs, VFDs, meters, controllers | Compressors, sterilizers, pump stations |
+| Modbus TCP (Ethernet) | Panel PCs, gateways, SCADA-adjacent devices | Machine tools, energy meters |
+| CAN 2.0B / J1939 | Vehicle and heavy-equipment buses | Trucks, gensets, ag machinery |
+| OBD-II | Passenger-vehicle diagnostics | Fleet vans, work trucks |
+| BLE 5.2 | Sensors, health devices, wearables | Blood-pressure cuffs, tag buttons, env pods |
+| LoRa | Long-range, low-power telemetry | Barns, tanks, remote sites |
+| 1-Wire | Cheap temperature chains | Cold storage, server rooms |
+
+## 10. Compute and storage
+
+Two planes, deliberately separated — compute stays in the base, data travels
+in the cartridge:
+
+- **Compute plane** — dual-core Cortex-A7 + 0.5 TOPS NPU: the local model,
+  anomaly detection, feature learning, and the MQTT broker run on the device.
+- **Storage plane** — 8 GB eMMC buffer plus a removable hardware-encrypted
+  cartridge (AES-256, key born in the cartridge, never leaves). Pulling the
+  cartridge removes the archive physically; compute keeps running and syncs
+  on re-insert.
+
+## 11. Status
 
 Design-stage hardware; EVT-phase target specs. Firmware is open source (MIT).
 MHS is a research preview — this binding tracks the spec as it stabilizes and
