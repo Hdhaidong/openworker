@@ -79,6 +79,15 @@ When the bound agent enters `interactive` mode and requests a permission:
    published to `gate/decision` and logged to the audit stream.
 4. Authorization is per-action, not per-session — a grant does not carry over.
 
+The same gate hardware also enforces **model-call authorization**. External
+models (an institution's own, reviewed at onboarding — BYOM) run in a sandbox
+and may only read the fields a consent card declares; they leave with signed
+inference outputs, never raw data. No consent card, no call — there is no
+bypass path and no direct API in the architecture, and a revocation cuts the
+model's next call immediately.
+
+![Mandatory authorization gate — models come in, raw data never leaves](assets/mandatory-auth-gate.svg)
+
 ## 5. Privacy model
 
 - The agent's private data (telemetry, logs, history) is computed on the Deck's
